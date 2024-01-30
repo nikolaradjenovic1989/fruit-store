@@ -1,8 +1,5 @@
 import { Fruit, Status } from '../api'
 
-export const imageUrl = (image: string) =>
-  new URL(`../images/${image}`, import.meta.url).href
-
 export const encodeBase64Image = (image: File) =>
   new Promise<string>((resolve) => {
     const reader = new FileReader()
