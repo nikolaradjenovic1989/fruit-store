@@ -3,8 +3,12 @@ import { Fruit, Status } from '../api'
 export const imageUrl = (image: string) =>
   new URL(`../images/${image}`, import.meta.url).href
 
-export const formatImageFileName = (fruit: string, image: File) =>
-  `${fruit.toLocaleLowerCase().replace(' ', '_')}.${image?.type.split('/')[1]}`
+export const encodeBase64Image = (image: File) =>
+  new Promise<string>((resolve) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(image)
+    reader.onloadend = () => resolve(reader.result as string)
+  })
 
 export const getActiveTab = (fruits: Fruit[]): Status => {
   const unique = [...new Set(fruits.map(({ status }) => status))]

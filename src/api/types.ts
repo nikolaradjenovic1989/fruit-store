@@ -5,7 +5,6 @@ export type Fruit = {
   country: string
   description: string
   image: string
-  imageSource: 'local' | 'url'
   name: string
   price: number
   status: Status

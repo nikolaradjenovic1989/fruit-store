@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react'
 import UploadImage from './UploadImage'
 import { Fruit, Status, addFruit } from '../../api'
 import Button from './Button'
-import { formatImageFileName, generateId } from '../../utils'
+import { encodeBase64Image, generateId } from '../../utils'
 
 type AddFruitFormProps = {
   onClose: () => void
@@ -11,27 +11,26 @@ type AddFruitFormProps = {
 const AddFruitForm = ({ onClose }: AddFruitFormProps) => {
   const [status, setStatus] = useState<Status>('hot')
   const [country, setCountry] = useState('America')
-  const [fruit, setFruit] = useState('')
+  const [name, setName] = useState('')
   const [price, setPrice] = useState<number>(0)
   const [imageUrl, setImageUrl] = useState('')
   const [image, setImage] = useState<File | null>(null)
   const [description, setDescription] = useState('')
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     // prevent save if data is incomplete, implementing validation
     // would require more time and I am time limited to finish task
-    if (fruit && price && description && (image || imageUrl)) {
-      const imageString = image ? formatImageFileName(fruit, image) : imageUrl
+    if (name && price && description && (image || imageUrl)) {
+      const imageString = image ? await encodeBase64Image(image) : imageUrl
 
       const fruitForSave: Fruit = {
         id: generateId(),
         country,
         description,
         image: imageString,
-        imageSource: image ? 'local' : 'url',
-        name: fruit,
+        name,
         price,
         status,
       }
@@ -93,17 +92,17 @@ const AddFruitForm = ({ onClose }: AddFruitFormProps) => {
 
           <tr className="flex items-center">
             <td className="flex justify-end w-[13%]">
-              <label htmlFor="fruit" className="mr-2 opacity-70">
+              <label htmlFor="name" className="mr-2 opacity-70">
                 Fruit:
               </label>
             </td>
             <td className="w-full">
               <input
-                id="fruit"
+                id="name"
                 type="text"
-                name="fruit"
-                value={fruit}
-                onChange={(e) => setFruit(e.target.value)}
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className="rounded-lg bg-btn-secondary hover:bg-btn-secondary-hover focus:ring-transparent border-0 w-full h-12"
               />
             </td>

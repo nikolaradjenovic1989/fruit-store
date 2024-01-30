@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import cn from 'classnames'
-import { getActiveTab, imageUrl } from '../../utils'
+import { getActiveTab } from '../../utils'
 import groupBy from 'lodash/groupBy'
 import { Fruit, Status, flags } from '../../api'
 import { LoadingSpinner } from '..'
@@ -78,27 +78,23 @@ const FruitList = ({ isLoading, fruits }: FruitListProps) => {
                 {fruits[0].country}
               </div>
               <div className="flex flex-col gap-y-5">
-                {fruits.map(
-                  ({ id, name, image, description, price, imageSource }) => (
-                    <div className="flex gap-7" key={id}>
-                      <img
-                        className="w-16 h-16 sm:w-32 sm:h-32 bg-white rounded-lg"
-                        src={imageSource === 'local' ? imageUrl(image) : image}
-                      />
-                      <div className="flex flex-col justify-between px-2 py-1">
-                        <div>
-                          <div className="font-semibold mb-2">{name}</div>
-                          <p className="description opacity-75">
-                            {description}
-                          </p>
-                        </div>
-                        <div className="text-price text-lg font-bold mb-1">
-                          $ {price}
-                        </div>
+                {fruits.map(({ id, name, image, description, price }) => (
+                  <div className="flex gap-7" key={id}>
+                    <img
+                      className="w-16 h-16 sm:w-32 sm:h-32 bg-white rounded-lg"
+                      src={image}
+                    />
+                    <div className="flex flex-col justify-between px-2 py-1">
+                      <div>
+                        <div className="font-semibold mb-2">{name}</div>
+                        <p className="description opacity-75">{description}</p>
+                      </div>
+                      <div className="text-price text-lg font-bold mb-1">
+                        $ {price}
                       </div>
                     </div>
-                  )
-                )}
+                  </div>
+                ))}
               </div>
             </div>
           ))}
