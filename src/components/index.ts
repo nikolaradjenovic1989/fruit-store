@@ -1,6 +1,7 @@
 export { default as FruitList } from './List/FruitList'
 export { default as DeleteList } from './List/DeleteList'
 export { default as Button } from './Form/Button'
+export { default as Input } from './Form/Input'
 export { default as UploadImage } from './Form/UploadImage'
 export { default as AddFruitForm } from './Form/AddFruitForm'
 export { default as Modal } from './Modal'

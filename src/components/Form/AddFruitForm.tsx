@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react'
 import UploadImage from './UploadImage'
 import { Fruit, Status, addFruit } from '../../api'
 import Button from './Button'
+import Input from './Input'
 import { encodeBase64Image, generateId } from '../../utils'
 
 type AddFruitFormProps = {
@@ -12,7 +13,7 @@ const AddFruitForm = ({ onClose }: AddFruitFormProps) => {
   const [status, setStatus] = useState<Status>('hot')
   const [country, setCountry] = useState('America')
   const [name, setName] = useState('')
-  const [price, setPrice] = useState<number>(0)
+  const [price, setPrice] = useState<string>('0')
   const [imageUrl, setImageUrl] = useState('')
   const [image, setImage] = useState<File | null>(null)
   const [description, setDescription] = useState('')
@@ -97,14 +98,7 @@ const AddFruitForm = ({ onClose }: AddFruitFormProps) => {
               </label>
             </td>
             <td className="w-full">
-              <input
-                id="name"
-                type="text"
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="rounded-lg bg-btn-secondary hover:bg-btn-secondary-hover focus:ring-transparent border-0 w-full h-12"
-              />
+              <Input name="name" value={name} onChange={setName} />
             </td>
           </tr>
 
@@ -115,13 +109,11 @@ const AddFruitForm = ({ onClose }: AddFruitFormProps) => {
               </label>
             </td>
             <td className="w-full">
-              <input
-                id="price"
-                type="number"
+              <Input
                 name="price"
+                type="number"
                 value={price}
-                onChange={(e) => setPrice(Number(e.target.value))}
-                className="rounded-lg bg-btn-secondary hover:bg-btn-secondary-hover focus:ring-transparent border-0 w-full h-12"
+                onChange={setPrice}
               />
             </td>
           </tr>
@@ -142,14 +134,7 @@ const AddFruitForm = ({ onClose }: AddFruitFormProps) => {
               </label>
             </td>
             <td className="w-full">
-              <input
-                id="iconUrl"
-                type="text"
-                name="imageUrl"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-                className="rounded-lg bg-btn-secondary hover:bg-btn-secondary-hover focus:ring-transparent border-0 w-full h-12"
-              />
+              <Input name="imageUrl" value={imageUrl} onChange={setImageUrl} />
             </td>
           </tr>
 

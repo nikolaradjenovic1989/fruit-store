@@ -6,7 +6,7 @@ export type Fruit = {
   description: string
   image: string
   name: string
-  price: number
+  price: string
   status: Status
 }
 
