@@ -1,3 +1,24 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: white;
+    background: #3c0054;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply w-20 rounded-lg bg-btn hover:bg-btn-hover focus:bg-btn-focus py-3 px-4;
+  }
+  .mobile-center {
+    @apply justify-center sm:justify-start;
+  }
+  .description {
+    @apply text-xs sm:text-sm;
+  }
+}

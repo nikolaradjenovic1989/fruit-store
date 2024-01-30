@@ -1,0 +1,42 @@
+[
+  {
+    "country": "🇺🇸 America",
+    "description": "A banana is an elongated, edible fruit - botanically a berry - produced by several kinds of large herbaceous flowering plants in the genus Musa.",
+    "image": "banana.png",
+    "name": "Banana",
+    "price": 5,
+    "status": "hot"
+  },
+  {
+    "country": "🇺🇸 America",
+    "description": "A cherry is the fruit of many plants of the genus Prunus, and is a fleshy drupe (stone fruit).",
+    "image": "cherry.png",
+    "name": "Cherry",
+    "price": 8,
+    "status": "hot"
+  },
+  {
+    "country": "🇺🇸 America",
+    "description": "The garden strawberry is a widely grown hybrid species of the genus Fragaria, collectively known as the strawberries, which are cultivated worldwide for their fruit.",
+    "image": "strawberry.png",
+    "name": "Strawberry",
+    "price": 3,
+    "status": "new"
+  },
+  {
+    "country": "🇬🇧 England",
+    "description": "An apple is a round, edible fruit produced by an apple tree Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus.",
+    "image": "apple.png",
+    "name": "Apple",
+    "price": 3,
+    "status": "all"
+  },
+  {
+    "country": "🇯🇵 Japan",
+    "description": "Watermelon (Citrullus lanatus) is a flowering plant species of the Cucurbitaceae family and the name of its edible fruit.",
+    "image": "watermelon.png",
+    "name": "Watermelon",
+    "price": 10,
+    "status": "recommend"
+  }
+]
