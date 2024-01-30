@@ -9,11 +9,18 @@
     color: white;
     background: #3c0054;
   }
+
+  input[type='file'] {
+    display: none;
+  }
 }
 
 @layer components {
   .btn-primary {
     @apply w-20 rounded-lg bg-btn hover:bg-btn-hover focus:bg-btn-focus py-3 px-4;
+  }
+  .btn-secondary {
+    @apply w-20 rounded-lg bg-btn-secondary hover:bg-btn-secondary-hover focus:bg-btn-secondary-focus py-3 px-4;
   }
   .mobile-center {
     @apply justify-center sm:justify-start;

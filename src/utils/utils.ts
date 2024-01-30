@@ -3,6 +3,9 @@ import { Fruit, Status } from '../api'
 export const imageUrl = (image: string) =>
   new URL(`../images/${image}`, import.meta.url).href
 
+export const formatImageFileName = (fruit: string, image: File) =>
+  `${fruit.toLocaleLowerCase().replace(' ', '_')}.${image?.type.split('/')[1]}`
+
 export const getActiveTab = (fruits: Fruit[]): Status => {
   const unique = [...new Set(fruits.map(({ status }) => status))]
 
@@ -16,3 +19,5 @@ export const getActiveTab = (fruits: Fruit[]): Status => {
 
   return 'all'
 }
+
+export const generateId = () => Math.random().toString(20).substring(2, 8)

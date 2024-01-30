@@ -13,6 +13,11 @@ export const queryClient = new QueryClient({
 
 export const initialFruits = fruits as Fruit[]
 
+export const getFruitsFromLocalStorage = () => localStorage.getItem('fruits')
+
+export const saveFruitsToLocalStorage = (fruits: Fruit[]) =>
+  localStorage.setItem('fruits', JSON.stringify(fruits))
+
 export const useFruitsQuery = (shouldLoad: boolean) =>
   useQuery<Fruit[]>({
     enabled: shouldLoad,
@@ -24,7 +29,16 @@ export const useFruitsQuery = (shouldLoad: boolean) =>
       }),
   })
 
-export const getFruitsFromLocalStorage = () => localStorage.getItem('fruits')
+export const addFruit = (fruitForSave: Fruit) => {
+  const fruitsFromStorage = JSON.parse(getFruitsFromLocalStorage()!) as Fruit[]
+  fruitsFromStorage.push(fruitForSave)
 
-export const saveFruitsToLocalStorage = (fruits: Fruit[]) =>
-  localStorage.setItem('fruits', JSON.stringify(fruits))
+  saveFruitsToLocalStorage(fruitsFromStorage)
+}
+
+export const deleteFruit = (deleteId: string) => {
+  const fruitsFromStorage = JSON.parse(getFruitsFromLocalStorage()!) as Fruit[]
+  const newFruits = fruitsFromStorage.filter(({ id }) => id !== deleteId)
+
+  saveFruitsToLocalStorage(newFruits)
+}
